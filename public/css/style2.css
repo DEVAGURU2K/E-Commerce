@@ -1,0 +1,21 @@
+/* style 2 css for dashboard design */
+.dashboard{
+    width:300px;
+    height:400px;
+    background-color: blue;
+}
+.navbar-nav a{
+    color:white;
+}
+.nav-link{
+    color:yellow;
+}
+.dash-item li{
+    list-style-type: none;
+    text-decoration: none !important;
+    color: green;
+    background-color: transparent;
+
+  }
+
+
