@@ -14,21 +14,14 @@
             <a class="navbar-brand" href="#">
                 <img src="{{URL:: asset('wallapaper/man.png')}}"  style="width:50px;" class="rounded-pill">
                 ADD  NEW PRODUCT</a>
-             <ul class="navbar-nav">
+              <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/')}}">HOME</a>
-                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('/addcategories')}}">CATEGORIES</a>
-                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{url('/adminlogin')}}">lOGOUT</a>
+                  <a class="nav-link" href="#">lOGOUT</a>
                 </li>
               </ul>
-
         </div>
     </nav>
-    <form action="{{route('addproduct')}}"  enctype="multipart/form-data"  method="post">
+    <form action="{{route('updateproduct',($data->id))}}"  enctype="multipart/form-data"  method="post">
         @csrf
         <div class="container">
           <h1>ADD NEW PRODUCT</h1>
@@ -42,21 +35,22 @@
           {{-- <input type="text" placeholder="Enter product name" name="email" required><br> --}}
 
           <label for="psw"><b>PRODUCT NAME</b></label><br>
-          <input type="text" placeholder="Enter the product name" name="productname" required><br>
+          <input type="text" placeholder="Enter the product name" name="productname"  value="{{$data->productname}}"required><br>
 
           <label for="psw-repeat"><b>BRAND NAME</b></label><br>
-          <input type="text" placeholder="Enter the brand name" name="brandname" required><br>
+          <input type="text" placeholder="Enter the brand name" name="brandname" value="{{$data->brandname}}" required><br>
 
           <label for="psw-repeat"><b>PRICE</b></label><br>
-          <input type="text" placeholder="Enter the selling price" name="price" required><br>
+          <input type="text" placeholder="Enter the selling price" name="price"  value="{{$data->price}}"required><br>
 
           <label for="psw-repeat"><b>MAXIMUM PRICE</b></label><br>
-          <input type="text" placeholder="Enter the selling price" name="maximumprice" required><br><br>
+          <input type="text" placeholder="Enter the selling price" name="maximumprice" value="{{$data->maxprice}}" required><br><br>
 
 
-          <input type="file" placeholder="upload product image" name="file" required><br>
+          <input type="file"  name="file" required />
+          <img alt="{{$data->post}}" style="max-width: 60px;"><br>
 
-          <button type="submit" class="btn btn-primary" name="submit">ADD</button><br>
+          <button type="submit" class="btn btn-primary">UPDATE</button><br>
           </div>
         </div>
       </form>
@@ -83,18 +77,6 @@
 .container select{
     width:300px;
     margin-left : 20px;
-
-}
- .nav-item a{
-    color:yellow;
-    text-decoration: none;
-    background-color: transparent;
-    hover:blue;
-    float: right;
-
-}
-.nav-item a:hover{
-    color:rgb(253, 62, 14);
 }
 </style>
 </body>

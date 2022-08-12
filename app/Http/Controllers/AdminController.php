@@ -30,7 +30,7 @@ class AdminController extends Controller
                 return view ('AdminPage');
             }
             else{
-                return  "password not match";
+                return 'inccorect password';
 
             }
         }
@@ -75,5 +75,5 @@ class AdminController extends Controller
 
  }
 
- 
+
 }

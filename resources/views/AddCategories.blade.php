@@ -17,7 +17,13 @@
                 ADD CATEGORIES</a>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">lOGOUT</a>
+                    <a class="nav-link" href="{{url('/')}}">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url('/productpage')}} "> PRODUCT</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/adminlogin')}}">lOGOUT</a>
                 </li>
               </ul>
         </div>
@@ -60,6 +66,17 @@ table{
     margin-top: 50px;
     width:500px;
 }
+
+.nav-item a{
+        color:yellow;
+        text-decoration: none;
+        background-color: transparent;
+        hover:blue;
+
+    }
+    .nav-item a:hover{
+        color:rgb(253, 62, 14);
+    }
 
 </style>
 

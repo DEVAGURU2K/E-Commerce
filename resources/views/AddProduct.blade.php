@@ -17,26 +17,42 @@
                  PRODUCT PAGE</a>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">lOGOUT</a>
+                    <a class="nav-link" href="{{url('/')}}">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">CATEGORIES</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/adminlogin')}}">lOGOUT</a>
                 </li>
               </ul>
         </div>
     </nav>
         <div class="container-categories">
-            <button class="btn btn-success" type="click"  onclick="window.location= '{{route ('addproduct')}}' ">ADD</button>
+            <button class="btn btn-success" type="click"  onclick="window.location= '{{route ('addnewproduct')}}' ">ADD</button>
         </div>
         <div>
-            <table  >
-                    <th>CAG ID</th>
-                    <th>CATGORIES NAME</th>
+            <table  style=" border-collapse: separate ">
+                    <th>PRD_ID</th>
+                    <th>CATGORIES_NAME</th>
+                    <th>PRODUCT_NAME</th>
+                    <th>BRAND_NAME</th>
+                    <th>PRICE</th>
+                    <th>MAXIMUM_PRICE</th>
+                    <th>POST</th>
                     <th>ACTIONS</th>
                 <tbody>
                     @foreach ($data as $datas )
                     <tr class="table-active">
                         <td>{{$datas->id}}</td>
-                        <td>{{$datas->categoriesname}}</td>
-                        <td><button class="btn btn-warning" ><a href="{{route('edit',$datas->id)}}">EDIT</a></button></td>
-                        <td><button class="btn btn-danger"><a href="{{route('delete',$datas->id)}}">DELETE</a></button></td>
+                        <td>{{$datas->categories_name}}</td>
+                        <td>{{$datas->productname}}</td>
+                        <td>{{$datas->brandname}}</td>
+                        <td>{{$datas->price}}</td>
+                        <td>{{$datas->maxprice}}</td>
+                        <td><img src="{{asset('public\image')}}/{{$datas->post}}" style="max-width: 40px;" ></td>
+                        <td><button class="btn btn-warning" ><a href="{{route('prdedit',$datas->id)}}">EDIT</a></button></td>
+                        <td><button class="btn btn-danger"><a href="{{route('prddelete',$datas->id)}}">DELETE</a></button></td>
                     </tr>
 
                     @endforeach
@@ -54,11 +70,18 @@
 }
 a{
     text-decoration: none;
+
 }
 
 table{
     margin-top: 50px;
     width:500px;
+}
+a:hover{
+    color:rgb(253, 62, 14);
+}
+.navbar-nav a{
+    color:yellow;
 }
 
 </style>

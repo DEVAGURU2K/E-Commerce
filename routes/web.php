@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AddProductController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AddCartController;
 
 
 
@@ -17,42 +20,86 @@ use App\Http\Controllers\AddProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// // home page route call
+
+// home page route call
 // Route::get('/home', function () {
 //     return view('home');
 // });
 
-// //  return to login page from login button to  route call
-// Route::view('/login', 'login')->name('login');
-// //admin page call
-// Route::post('/admindashboard',  [AdminController::class,'adminCheck'])->name('adminpage');
 
-// // registration call from login blade files
-// Route::view('/registration', 'RegistrationPage')->name('registration');
+// Route::view('/','welcome');
 
-// // add categories call from admin page
-// Route::get('/addcategories',[AdminController::class,'ViewCag'])->name('addcategories');
+Route::get('/', [HomeController::class, 'HomePage']);
 
-// // add categories
-// Route::get('/addnewcategories',[AdminController::class,'AddNewCag']);
+// login page
+Route::view('/login123', 'loginPage')->name('login');
 
-// // add  new categories call from admin add categories link
-// Route::view('/addnewcag', 'AddCategoriesForm')->name('add');
+//  admin login page
+Route::view('/adminlogin', 'adminLogin')->name('adminlogin');
+// user login page
+Route::view('/userlogin', 'userlogin')->name('userlogin');
+//admin page call
+Route::post('/admindashboard',  [AdminController::class,'adminCheck'])->name('adminpage');
+//user page call
+Route::post('/userdashboard',  [UserController::class,'userCheck'])->name('userpage');
+// registration call from login blade files
+Route::view('/registration', 'RegistrationPage')->name('registration');
 
-// // insert value to database once  add  cag button is clicked
-// Route::post('/cagvalue',  [AdminController::class,'InsertAddCag'])->name('addcag');
+// store data to registertable
+Route::post('/insertregistration',[UserController::class,'InsertRegistration'])->name('insertregistration');
 
-// // edit and delete from cag actions
-// Route::get('/edit/{id}',[AdminController::class,'CagEdit'])->name('edit');
-// Route::post('/update/{id}',[AdminController::class,'CagUpdate'])->name('update');
-// Route::get('/delete/{id}',[AdminController::class,'CagDelete'])->name('delete');
+// add categories call from admin page
+Route::get('/addcategories',[AdminController::class,'ViewCag'])->name('addcategories');
 
-// //  ADD  and edit and edit product  form
-// //admin page call
-// Route::get('/addproductpage',  [AddProductController::class,'AddProductpage'])->name('addproductpage');
+// add categories
+Route::get('/addnewcategories',[AdminController::class,'AddNewCag']);
 
-// // Route::post('/addnewproduct',[AddProductController::class,'store'])->name('addproduct');
+// add  new categories call from admin add categories link
+Route::view('/addnewcag', 'AddCategoriesForm')->name('add');
+
+// insert value to database once  add  cag button is clicked
+Route::post('/cagvalue',  [AdminController::class,'InsertAddCag'])->name('addcag');
+
+// edit and delete from cag actions
+Route::get('/edit/{id}',[AdminController::class,'CagEdit'])->name('edit');
+Route::post('/update/{id}',[AdminController::class,'CagUpdate'])->name('update');
+Route::get('/delete/{id}',[AdminController::class,'CagDelete'])->name('delete');
+
+//  ADD  and edit and edit product  form
+//admin page call
+Route::get('/productpage',  [AddProductController::class,'Productpage'])->name('productpage');
+
+
+Route::get('/addnewproduct',  [AddProductController::class,'AddNewProduct'])->name('addnewproduct');
+
+Route::post('/addproduct',[AddProductController::class,'store'])->name('addproduct');
+// delete product
+Route::get('/deleteproduct/{id}',[AddProductController::class,'Productdelete'])->name('prddelete');
+
+// edit product
+Route::get('/editproduct/{id}',[AddProductController::class,'Productedit'])->name('prdedit');
+
+// update product
+Route::post('/updateproduct/{id}',[AddProductController::class,'Producteupdate'])->name('updateproduct');
+
+///add cart
+
+ Route::post('/addcart/{id}',[AddCartController::class,'Addcart'])->name('addcart');
+ ///view add cart in users
+ Route::get('/viewaddcart',[AddCartController::class,'Viewcart'])->name('viewcart');
+
+ ///delete cart
+ Route::get('/cartdelete/{id}',[AddCartController::class,'DeleteCart'])->name('deletecart');
+
+//  increase quantity in view cart page
+Route::get('/increasequantity/{id}',[AddCartController::class,'IncreaseQuality'])->name('increasequality');
+//  decrease quantity in view cartpage
+Route::get('/decreasequantity/{id}',[AddCartController::class,'DecreaseQuality'])->name('decreasequality');
+
+//  filter catgories
+// Route::post('/categories/{cagval}',[HomeController::class,'FilterCag'])->name(filter);
+// filter ajax call route
+Route::get('/filter',[HomeController::class,'FilterCag'])->name('filter');
+// product cag group.
+Route::get('/filterproduct',[HomeController::class,'FilterProduct'])->name('productfilter');

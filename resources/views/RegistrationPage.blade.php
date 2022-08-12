@@ -10,11 +10,12 @@
     <title>REGISTRATION FORM</title>
 </head>
 <body>
-    <form action="action_page.php">
+    <form action="{{ route ('insertregistration')}}" method="post">
+        @csrf
         <div class="container">
           <div class="mb-3">
               <label for="username"><b>Username</b></label><br>
-              <input type="text" placeholder="Enter username" name="email" id="email" required><br>
+              <input type="text" placeholder="Enter username" name="username" id="email" required><br>
           </div>
           <div class="mb-3">
               <label for="email"><b>Email</b></label><br>
@@ -22,15 +23,15 @@
           </div>
           <div class="mb-3">
             <label for="email"><b>MobileNumber</b></label><br>
-            <input type="text" placeholder="Enter  Email" name="email" id="email" required><br>
+            <input type="text" placeholder="Enter  Email" name="mobilephone" id="mobilephone" required><br>
           </div>
           <div class="mb-3">
             <label for="psw"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" name="psw" id="psw" required><br>
+            <input type="password" placeholder="Enter Password" name="password" id="psw" required><br>
           </div>
           <div class="mb-3">
              <label for="psw-repeat"><b>Repeat Password</b></label><br>
-             <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required><br>
+             <input type="password" placeholder="Repeat Password" name="conformpassword" id="psw-repeat" required><br>
           </div>
           <button type="submit">SIGN UP</button><br>
 

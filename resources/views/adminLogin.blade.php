@@ -10,21 +10,32 @@
     <title>LoginPage</title>
 </head>
 <body>
-
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{{URL:: asset('wallapaper/man.png')}}"  style="width:50px;" class="rounded-pill">
+                ADMIN LOGIN PAGE </a>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/')}}">HOME</a>
+                  </li>
+              </ul>
+        </div>
+    </nav>
      <form class="login-form" method="post" action="{{ route('adminpage') }}" autocomplete="off">
         @csrf
         <div class="box-container" >
-            <h2>LOGIN FORM </h2>
+            <h2> LOGIN </h2>
             <div class="mb-3">
-                Username:<br><input type="text" placeholder="Enter your username"  name= "name" class="name"><br>
+                Username:<br><input type="text" placeholder="Enter your username"  name= "name" class="name" required=""><br>
             </div>
             <div class="mb-3">
-                Password: <br><input type="password" placeholder="Enter your Password"  name="password" class="password"><br>
+                Password: <br><input type="password" placeholder="Enter your Password"  name="password" class="password" required=""><br>
             </div>
             <div class ="mb-3">
-                <button type="submit"class="btn btn-primary">LOGIN</button>
+                ,<button type="submit"class="btn btn-primary">LOGIN</button>
             </div>
-            <a href="{{route('registration')}}">new user?</a>
+            {{-- <a href="{{route('registration')}}">new user?</a> --}}
         </div>
 
      </form>
