@@ -53,7 +53,6 @@ class AddProductController extends Controller
 
      public function Productdelete($id){
         $prd = addproduct::find($id);
-        // unlink(public_path('public\Image')).'/'.$prd->post;
         $prd->delete();
         return redirect('/productpage');
 

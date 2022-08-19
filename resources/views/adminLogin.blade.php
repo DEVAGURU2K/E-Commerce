@@ -35,7 +35,7 @@
             <div class ="mb-3">
                 ,<button type="submit"class="btn btn-primary">LOGIN</button>
             </div>
-            {{-- <a href="{{route('registration')}}">new user?</a> --}}
+
         </div>
 
      </form>

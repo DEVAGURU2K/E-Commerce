@@ -9,6 +9,9 @@
     <title>ADD CART</title>
 </head>
 <body>
+    @php
+        global $amount;
+    @endphp
     <div class="header">
         <img src="{{URL:: asset('wallapaper/logo4.png')}}"  style="width:40px; background-color:blue" class="rounded-pill">
 
@@ -49,6 +52,7 @@
                             </tbody>
 
                         </table>
+                        <button  onclick="location.href='{{ url('/stripe') }}'" class="btn btn-success ml-6" style="width:600px;">CHECKOUT</button>
                     </div>
                 </div>
                 <div class="col col-lg-4">

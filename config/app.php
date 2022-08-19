@@ -211,7 +211,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        //  'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe,
     ])->toArray(),
+
+    'stripe' =>[
+        'secret'=> env('STRIPE_SECRET')
+    ],
 
 ];

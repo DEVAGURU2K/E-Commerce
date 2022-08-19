@@ -39,7 +39,6 @@
             <option value="{{$cags->id}}">{{$cags->categoriesname}}</option>
             @endforeach
           </select>
-          {{-- <input type="text" placeholder="Enter product name" name="email" required><br> --}}
 
           <label for="psw"><b>PRODUCT NAME</b></label><br>
           <input type="text" placeholder="Enter the product name" name="productname" required><br>

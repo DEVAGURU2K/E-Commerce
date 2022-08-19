@@ -13,15 +13,19 @@ class AddCartController extends Controller
     public function Addcart(Request $request , $id){
         $cart = new addtocart;
         $fetch= addproduct::find($id);
+        // $check= addproduct::select("*")->where([["productname", "=", $fetch->productname],])->get();
+
         $cart->productname=$fetch->productname;
         $cart->quantity=$request->input('quantity');
         $cart->price=$fetch->price;
         $cart->prices=$fetch->price;
         $cart->productimage=$fetch->post;
         $cart->save();
-        session()->flash('message', 'add to cart added successfully.');
-        Session()->flash('alert-class', 'alert-danger');
-        return redirect()->back();
+        // $count=session()->put($cart);
+        // session()->flash('message', 'add to cart added successfully.');
+        // Session()->flash('alert-class', 'alert-danger');
+        return $cart->productname;
+        // redirect()->back();
     }
 
    public function Viewcart(){
@@ -29,12 +33,18 @@ class AddCartController extends Controller
     return  view("viewaddcart",compact('data'));
    }
 
+public function Filtercart($data){
+    return view("viewaddcart",compact('data'));
+
+}
+
  public function Deletecart($id){
      $prd = addtocart::find($id);
      $prd->delete();
      $data=addtocart::all();
      return  view("viewaddcart",compact('data'));
  }
+
 public function IncreaseQuality($id){
     $prd = addtocart::find($id);
     if($prd->quantity >= 1){

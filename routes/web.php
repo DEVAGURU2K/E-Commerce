@@ -6,6 +6,8 @@ use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AddCartController;
+use App\Http\Controllers\MoneySetupController;
+use App\Http\Controllers\StripeController;
 
 
 
@@ -89,17 +91,29 @@ Route::post('/updateproduct/{id}',[AddProductController::class,'Producteupdate']
  ///view add cart in users
  Route::get('/viewaddcart',[AddCartController::class,'Viewcart'])->name('viewcart');
 
+//  fileter cart
+ Route::get('/filtercart/{data}',[AddCartController::class,'Filtercart'])->name('filtercart');
+
  ///delete cart
  Route::get('/cartdelete/{id}',[AddCartController::class,'DeleteCart'])->name('deletecart');
+
+//  count cart
+Route::get('/totaladdcart',[AddCartController::class,'CountCart']);
 
 //  increase quantity in view cart page
 Route::get('/increasequantity/{id}',[AddCartController::class,'IncreaseQuality'])->name('increasequality');
 //  decrease quantity in view cartpage
 Route::get('/decreasequantity/{id}',[AddCartController::class,'DecreaseQuality'])->name('decreasequality');
 
-//  filter catgories
-// Route::post('/categories/{cagval}',[HomeController::class,'FilterCag'])->name(filter);
 // filter ajax call route
 Route::get('/filter',[HomeController::class,'FilterCag'])->name('filter');
 // product cag group.
 Route::get('/filterproduct',[HomeController::class,'FilterProduct'])->name('productfilter');
+
+
+// stripe call
+Route::get('/stripe', [StripeController::class, 'stripe']);
+Route::post('/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+
+
+

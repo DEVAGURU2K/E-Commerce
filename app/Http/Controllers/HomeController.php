@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\addproduct;
+use App\Models\addtocart;
 use App\Models\addcags;
 
 class HomeController extends Controller
@@ -13,8 +14,15 @@ class HomeController extends Controller
     public function HomePage(){
         $data = addproduct::all();
         $cag = addcags::all();
+        $totalcart= addtocart::all()->count();
 
-        return view('home',compact('data','cag'));
+        return view('home',compact('data','cag','totalcart'));
+    }
+    public function Filterprodcuct($data){
+        $cag = addcags::all();
+        $totalcart= addtocart::all()->count();
+
+        return view('home',compact('data','cag','totalcart'));
     }
     public function FilterCag(Request $request){
           $id=  $request->input('category');
@@ -24,22 +32,6 @@ class HomeController extends Controller
             'product'=>$product
           ]);
           echo $product;
-        // $id=$request->input('id');
-        // $id = $_GET['category'];
-        // return $id;
-        // $fetch = addproduct::query();
-        // if($request->ajax()){
-        //     echo $request->category;
-        //     $product=$fetch->where(['categories_name'=>$request->category])->get();
-        //     return response()->json(['product'=>$product]);
-        // }
-        // $product =$query->get();
-        //  return view('change',compact('product'));
-        // // $cagvalue=$request->get('categories');
-        // return $cagvalue;
-        // $fetch = addproduct::find($id);
-        // echo $fetch;
-        // return view('viewaddcart');
     }
 
     public function FilterProduct(Request $request){
@@ -51,12 +43,6 @@ class HomeController extends Controller
           return response ()->json([
             'products'=>$products
           ]);
-        // $products = addproduct::where('productname',$id)->get();
-        // // $products=$fetch->where(['productname'=>$id])->get();
-        // // $product=$fetch->where(['product_name'=>$id])->get();
-        // return response ()->json([
-        //   'products'=>$products
-        // ]);
 
     }
 }
