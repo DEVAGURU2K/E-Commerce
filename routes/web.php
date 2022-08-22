@@ -113,7 +113,7 @@ Route::get('/filterproduct',[HomeController::class,'FilterProduct'])->name('prod
 
 // stripe call
 Route::get('/stripe', [StripeController::class, 'stripe']);
-Route::post('/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+Route::post('/stripegateway', [StripeController::class, 'stripePost'])->name('stripe.post');
 
 
 

@@ -28,7 +28,7 @@ class StripeController extends Controller
     public function stripePost(Request $request )
     {
         $amount = addtocart::sum('prices');
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Stripe::setApiKey('sk_test_51LVt6hSEfxiOa6hiRq9ln4Z95tMI5eetbQ1EH9FAy0kImNVlI04LSO8RlJVfEImbRZhL0Uyellu1Qlgyn4ZXz7mA00v6npjqwa');
         \Stripe\PaymentIntent::create([
             'payment_method_types' => ['card'],
             'amount' => $amount*100,

@@ -153,6 +153,25 @@ a{
          });
         });
     });
+    // add cart to function
+    // $("#addcart").on('click',function(){
+    //      var category=$(this).val();
+    //      $("#input")
+    //      console.log(category);
+    //      $.ajax({
+    //         type:'GET',
+    //         url:"{{route('filter')}}",
+    //         data:{category:category},
+    //         success: function (response) {
+    //             console.log(response.product);
+    //             $("#product").empty();
+    //             $.each(response.product,function(index,value){
+    //                 $("#product").append
+    //                 ('<option> '+value.productname+'</option>');
+    //              });
+    //         }
+    //      });
+    //     });
 
 
         $('#filter').on('click', function(){

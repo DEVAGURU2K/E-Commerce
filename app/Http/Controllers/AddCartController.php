@@ -13,19 +13,26 @@ class AddCartController extends Controller
     public function Addcart(Request $request , $id){
         $cart = new addtocart;
         $fetch= addproduct::find($id);
-        // $check= addproduct::select("*")->where([["productname", "=", $fetch->productname],])->get();
+        $check= addtocart::where([["productname", $fetch->productname],])->first();
+        if ($check != ""){
+            $value= $check->id;
+            $price =$check->price;
+            $update= addtocart::find($value);
+            $update->quantity += 1;
+            $update->prices+= 1*$price;
+            $update->save();
+            return  redirect()->back();
+        }
+        else{
+            $cart->productname=$fetch->productname;
+            $cart->quantity=$request->input('quantity');
+            $cart->price=$fetch->price;
+            $cart->prices=$fetch->price;
+            $cart->productimage=$fetch->post;
+            $cart->save();
+            return redirect()->back();
+        }
 
-        $cart->productname=$fetch->productname;
-        $cart->quantity=$request->input('quantity');
-        $cart->price=$fetch->price;
-        $cart->prices=$fetch->price;
-        $cart->productimage=$fetch->post;
-        $cart->save();
-        // $count=session()->put($cart);
-        // session()->flash('message', 'add to cart added successfully.');
-        // Session()->flash('alert-class', 'alert-danger');
-        return $cart->productname;
-        // redirect()->back();
     }
 
    public function Viewcart(){

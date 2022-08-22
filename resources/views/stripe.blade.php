@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>payment gateway</title>
+    <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style type="text/css">
@@ -26,14 +26,15 @@
 
 <div class="container">
 
-
-
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <div class="row display-tr" >
                         <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >
+
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -50,7 +51,8 @@
                             action="{{ route('stripe.post') }}"
                             method="post"
                             class="require-validation"
-                            data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                            data-cc-on-file="false"
+                            data-stripe-publishable-key="pk_test_51LVt6hSEfxiOa6hidiqFv1JRwYAEBktPrjSXU4oCViAFkDgHUglOXeVIkcs0oXBHIHzxnHQnAU04yYVAWyjanuL700lhFFTklh"
                             id="payment-form">
                         @csrf
 
@@ -96,7 +98,7 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now  ₹ {{$Article}}</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ₹ {{$Article}}</button>
                             </div>
                         </div>
 
@@ -118,7 +120,7 @@ $(function() {
     var $form = $(".require-validation");
 
     $('form.require-validation').bind('submit', function(e) {
-        var $form         = $(".require-validation"),
+        var $form = $(".require-validation"),
         inputSelector = ['input[type=email]', 'input[type=password]',
                          'input[type=text]', 'input[type=file]',
                          'textarea'].join(', '),
